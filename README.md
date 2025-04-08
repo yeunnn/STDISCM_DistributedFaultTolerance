@@ -117,9 +117,6 @@ distributed-enrollment<br>
 
          cd distributed-enrollment/broker
          npm install
-         node app.js
-
-       This starts the Broker node on port 3000.
 
    - **Configure Environment Variables via .env:**
      
@@ -132,6 +129,12 @@ distributed-enrollment<br>
      
      To find the VM's IP address:
        - On Windows (inside the VM): open Command Prompt and run `ipconfig`
+
+        After either updating or not the .env file, run in the terminal:
+     
+             node app.js
+
+       This starts the Broker node on port 3000.
 
 3. **Using the Application**
 
