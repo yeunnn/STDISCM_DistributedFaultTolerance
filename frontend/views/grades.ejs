@@ -1,0 +1,22 @@
+<!-- frontend/views/grades.ejs -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Grades</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Your Grades</h1>
+    <!-- Display error message if exists -->
+    <% if (error) { %>
+      <p style="color:red;"><strong>Error:</strong> <%= error %></p>
+    <% } %>
+    <ul>
+        <% grades.forEach(function(item) { %>
+            <li>Course <%= item.courseId %>: <%= item.grade %></li>
+        <% }); %>
+    </ul>
+    <p><a href="/dashboard">Back to Dashboard</a></p>
+</body>
+</html>
+

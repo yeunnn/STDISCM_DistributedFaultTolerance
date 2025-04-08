@@ -1,0 +1,54 @@
+<!-- frontend/views/student-details.ejs -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Details</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <h1>Student Details</h1>
+  <% if (error) { %>
+    <p style="color:red;"><%= error %></p>
+  <% } %>
+  
+  <table border="1" cellspacing="0" cellpadding="8">
+    <thead>
+      <tr>
+         <th>Username</th>
+         <th>Enrollments</th>
+         <th>Grades</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% studentDetails.forEach(function(student) { %>
+        <tr>
+          <td><%= student.username %></td>
+          <td>
+            <% if (student.enrollments && student.enrollments.length > 0) { %>
+              <ul>
+                <% student.enrollments.forEach(function(course) { %>
+                  <li><%= course %></li>
+                <% }); %>
+              </ul>
+            <% } else { %>
+              None
+            <% } %>
+          </td>
+          <td>
+            <% if (student.grades && student.grades.length > 0) { %>
+              <ul>
+                <% student.grades.forEach(function(gradeItem) { %>
+                  <li>Course <%= gradeItem.courseId %>: <%= gradeItem.grade %></li>
+                <% }); %>
+              </ul>
+            <% } else { %>
+              None
+            <% } %>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  <p><a href="/dashboard">Back to Dashboard</a></p>
+</body>
+</html>

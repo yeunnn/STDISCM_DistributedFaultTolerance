@@ -1,0 +1,28 @@
+<!-- frontend/views/courses.ejs -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Courses</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Available Courses</h1>
+    <% if (message) { %>
+      <p style="color:green;"><%= message %></p>
+    <% } %>
+    <ul>
+    <% courses.forEach(function(course) { %>
+        <li>
+            <%= course.courseId %>: <%= course.name %>
+            <% if (user.role === 'student') { %>
+            <form action="/enroll" method="POST" style="display:inline;">
+                <input type="hidden" name="courseId" value="<%= course.courseId %>">
+                <button type="submit">Enroll</button>
+            </form>
+            <% } %>
+        </li>
+    <% }); %>
+    </ul>
+    <p><a href="/dashboard">Back to Dashboard</a></p>
+</body>
+</html>

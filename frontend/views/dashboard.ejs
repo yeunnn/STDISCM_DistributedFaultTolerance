@@ -1,0 +1,45 @@
+<!-- frontend/views/dashboard.ejs -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Dashboard</h1>
+    <p>Welcome, <%= user.username %> (<%= user.role %>)</p>
+    <nav>
+        <a href="/courses">View Courses</a>
+        <% if (user.role === 'student') { %>
+            | <a href="/grades">View Grades</a>
+        <% } else if (user.role === 'faculty') { %>
+            | <a href="/student-details">View Student Details</a>
+        <% } %>
+        | <a href="/logout">Logout</a>
+    </nav>
+    <hr>
+    <% if (error) { %>
+        <p style="color:red;"><strong>Error:</strong> <%= error %></p>
+    <% } %>
+    <% if (user.role === 'faculty') { %>
+        <section id="upload-grade">
+            <h3>Upload Grade (Faculty Only)</h3>
+            <form action="/upload-grade" method="POST">
+                <label>Student Username:
+                    <input type="text" name="studentUsername" required>
+                </label><br>
+                <label>Course ID:
+                    <input type="text" name="courseId" required>
+                </label><br>
+                <label>Grade:
+                    <input type="text" name="grade" required>
+                </label><br>
+                <button type="submit">Upload Grade</button>
+            </form>
+        </section>
+    <% } %>
+    <section>
+        <p>Select an option above to continue.</p>
+    </section>
+</body>
+</html>
