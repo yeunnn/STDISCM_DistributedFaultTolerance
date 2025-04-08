@@ -117,20 +117,21 @@ distributed-enrollment<br>
 
          cd distributed-enrollment/broker
          npm install
+         node app.js
 
-       **Update Service Endpoints Using Environment Variables:**
+       This starts the Broker node on port 3000.
 
-       To ease testing in various VMs, set the environment variables when running the Broker so that it points to the correct backend service IP addresses.
-
-         AUTH_SERVICE_URL=http://<VM_IP_ADDRESS>:4000 COURSE_SERVICE_URL=http://<VM_IP_ADDRESS>:5000 node app.js
-
-       This command instructs the Broker to use the specified IP addresses and ports for the Auth and Course Services.
-       This also starts the Broker node on port 3000.
-
-     Replace `<VM_IP_ADDRESS>` with the actual IP address of your virtual machine.
+   - **Configure Environment Variables via .env:**
      
-     To find the VM IP address:
-       - On Windows (in the VM): open Command Prompt and run `ipconfig`
+     To ease testing in various VMS, in the Broker’s folder, ensure the `.env` file contains the correct endpoints for the backend services. For example:
+
+         AUTH_SERVICE_URL=http://<VM_IP_ADDRESS>:4000
+         COURSE_SERVICE_URL=http://<VM_IP_ADDRESS>:5000
+
+     Replace `<VM_IP_ADDRESS>` with your VM’s IP address.
+     
+     To find the VM's IP address:
+       - On Windows (inside the VM): open Command Prompt and run `ipconfig`
 
 3. **Using the Application**
 
