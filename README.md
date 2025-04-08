@@ -120,7 +120,7 @@ distributed-enrollment<br>
 
    - **Configure Environment Variables via .env:**
      
-     To ease testing in various VMS, in the Broker’s folder, ensure the `.env` file contains the correct endpoints for the backend services. For example:
+     To ease testing in various VMs, in the Broker’s folder, ensure the `.env` file contains the correct endpoints for the backend services. For example:
 
          AUTH_SERVICE_URL=http://<VM_IP_ADDRESS>:4000
          COURSE_SERVICE_URL=http://<VM_IP_ADDRESS>:5000
@@ -149,6 +149,10 @@ distributed-enrollment<br>
        - **Students** can view courses, enroll in a course, and view grades.
        - **Faculty** have options to view student details and upload grades.
    - All API calls (e.g., login, course enrollment) are forwarded by the Broker. If one backend node (Auth or Course Service) is down, specific error messages will be displayed on the Frontend.
+   - Other dummy values are courses data such as:
+       - courseId: CSE101 | name: Introduction to Computer Science
+       - courseId: CSE102 | name: Data Structures
+       - courseId: CSE103 | name: Distributed Systems
 
 4. **Simulating Fault Tolerance**
 
